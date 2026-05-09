@@ -46,4 +46,4 @@ The workflow is reusable across multiple niches by changing:
 This allows one operator to manage multiple content channels efficiently.
 
 
-(Add Loom link here)
+https://www.loom.com/share/16c5e0834b024ce488013e453c80a182
