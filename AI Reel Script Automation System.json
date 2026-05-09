@@ -1,0 +1,110 @@
+{
+  "name": "AI Reel Script Automation System",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "52e700a4-8722-476b-a167-8050d95df031",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        256,
+        128
+      ],
+      "id": "caeb2dab-9940-4adc-9735-d3d84b7ccdbd",
+      "name": "When chat message received",
+      "webhookId": "9a470f48-efea-4af9-b000-070050ef4b07"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Generate a viral 30-second Instagram reel script about AI replacing jobs.\n\nRules:\n\n* emotional hook\n* short punchy lines\n* conversational\n* curiosity driven\n* ending CTA\n\nReturn:\nHook:\nScript:\nCTA:\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        736,
+        224
+      ],
+      "id": "b0092a93-232d-4e96-b197-2da79ae79706",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        544,
+        64
+      ],
+      "id": "00ee6889-8562-4de3-9041-776524a7c1e2",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "r9Dvdd6ApfwM7PZ6",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": -1,
+    "availableInMCP": false
+  },
+  "versionId": "a0a131ab-4b35-4d0f-bca1-b9fe2eeb7fbc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d233f1246aa6cec60cc14dcdab475a34ef1a10c1698d5d513dce4484d5eef5e1"
+  },
+  "id": "WDDCjQA49LKn1nTS",
+  "tags": []
+}
